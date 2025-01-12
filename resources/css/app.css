@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply dark:text-white;
+    }
+    p {
+        @apply dark:text-white;
+    }
+    label {
+        @apply dark:text-white;
+    }
+    ::selection {
+        @apply dark:text-black;
+    }
+}
