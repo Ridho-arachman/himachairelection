@@ -12,11 +12,14 @@ class Prodi extends Model
     protected $table = 'prodi';
     protected $primaryKey = 'kd_prodi';
     protected $fillable = ['kd_prodi', 'nama_prodi'];
-    protected $keyType = 'string';
     public $incrementing = false;
 
     public function kandidat()
     {
-        return $this->hasMany(Kandidat::class, 'kd_prodi');
+        return $this->hasMany(Kandidat::class, 'kd_prodi', 'kd_prodi');
+    }
+    public function user()
+    {
+        return $this->hasMany(User::class, 'kd_prodi', 'kd_prodi');
     }
 }

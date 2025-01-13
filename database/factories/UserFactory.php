@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Prodi;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -28,7 +29,10 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'role' => 'admin',
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('admin'),
+                'role' => 'admin'
             ];
         });
     }

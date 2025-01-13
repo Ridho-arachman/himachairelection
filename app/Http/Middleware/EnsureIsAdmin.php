@@ -16,9 +16,7 @@ class EnsureIsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
-            return redirect('/admin/login')->with('error', 'Silakan login terlebih dahulu.');
-        }
+
 
         // Jika pengguna login tetapi bukan admin, logout dan arahkan ke login
         if (Auth::user()->role !== 'admin') {

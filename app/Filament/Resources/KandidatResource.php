@@ -56,24 +56,21 @@ class KandidatResource extends Resource
     public static function table(Table $table): Table
     {
         return $table->columns([
-            TextColumn::make('nim')
+            TextColumn::make('nim_kandidat')
                 ->label('NIM')
                 ->searchable(),
-            TextColumn::make('name')
+            TextColumn::make('nama')
                 ->label('Nama')
                 ->searchable(),
-            TextColumn::make('email')
-                ->label('Email')
-                ->searchable(),
-            ImageColumn::make('image')
+            ImageColumn::make('foto')
                 ->label('Foto')
                 ->circular()
-                ->getStateUsing(function ($record) {
-                    return asset('storage/' . $record->image); // Menggunakan URL yang benar
-                })
+                // ->getStateUsing(function ($record) {
+                //     return asset('storage/' . $record->image); // Menggunakan URL yang benar
+                // })
                 ->width(50) // Menentukan lebar gambar
                 ->height(50), // Menentukan tinggi gambar
-            TextColumn::make('prodi')
+            TextColumn::make('kd_prodi')
                 ->label('Program Studi')
                 ->searchable(),
             TextColumn::make('created_at')

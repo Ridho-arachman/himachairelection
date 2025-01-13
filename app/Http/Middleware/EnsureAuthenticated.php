@@ -11,19 +11,14 @@ class EnsureAuthenticated
 {
     public function handle(Request $request, Closure $next): Response
     {
-        logger('Session Data:', session()->all());
-        logger('Auth Check:', [Auth::check()]);
-
         if (!Auth::check()) {
             return redirect('/login');
         }
-
         // Jika pengguna login tetapi bukan admin, logout dan arahkan ke login
         if (Auth::user()->role !== 'user') {
             Auth::logout(); // Logout pengguna
             return redirect('/login')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
-
         return $next($request);
     }
 }

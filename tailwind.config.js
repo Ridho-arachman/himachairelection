@@ -15,6 +15,15 @@ export default {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
+            keyframes: {
+                infinitSlide: {
+                    from: { transform: "translatex(0%)" },
+                    to: { transform: "translatex(-100%)" },
+                },
+            },
+            animation: {
+                infinitSlide: "infinitSlide 20s linear infinite",
+            },
         },
     },
 

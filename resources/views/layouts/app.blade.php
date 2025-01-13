@@ -19,9 +19,10 @@
     {{-- Header --}}
     @include('partials.header')
     {{-- Header End --}}
-
+    @include('partials.success')
+    @include('partials.errors')
     {{-- Main --}}
-    <main class="flex-1 container mx-auto px-6 py-12 flex justify-center items-center">
+    <main class="flex-1 container mx-auto px-6 py-12 flex justify-center items-center mt-28 ">
         @yield('content')
     </main>
     {{-- Main End --}}

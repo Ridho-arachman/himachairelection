@@ -51,7 +51,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Registrasi Berhasil');
     }
 
     public function logout(Request $request)
@@ -60,6 +60,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Logout Berhasil');
     }
 }

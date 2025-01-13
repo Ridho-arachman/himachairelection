@@ -37,8 +37,14 @@ class User extends Authenticatable
         ];
     }
 
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'kd_prodi');
+    }
+
     public function kandidat()
     {
-        return $this->belongsTo(Kandidat::class, 'kandidat_id', 'nim');
+        return $this->belongsToMany(Kandidat::class, 'vote', 'id_user', 'nim_kandidat');
+        // Jika tabel `vote` memiliki kolom timestamps
     }
 }

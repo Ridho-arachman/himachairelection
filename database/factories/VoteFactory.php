@@ -21,9 +21,8 @@ class VoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_user' => User::inRandomOrder()->first()->id, // Ambil id_user acak dari tabel users
+            'id_user' => User::whereNotIn('id', Vote::pluck('id_user'))->inRandomOrder()->first()->id, // Ambil id_user acak dari tabel users
             'nim_kandidat' => Kandidat::inRandomOrder()->first()->nim_kandidat,
-            'waktu_vote' => now(),
         ];
     }
 }

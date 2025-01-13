@@ -3,24 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kandidat;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
+
+use function PHPSTORM_META\map;
 
 class KandidatController extends Controller
 {
-    public function index(Request $request)
+    public function showKandidat(Request $request, string $id)
     {
-        $data = Kandidat::all();
-        return view('detail-kandidat', ["name" => "maman", "image" => "https://via.placeholder.com/150", "description" => "jkbljabkjbaljbalba"]);
+        $candidate = Kandidat::find($id);
+        if (!$candidate) {
+            return redirect()->route('dashboard')->with('error', 'Kandidat tidak ditemukan.');
+        }
+        return view('detail-kandidat', compact('candidate'));
     }
 
-    public function showKandidat(Request $request)
-    {
 
-        return view('kandidat', ["candidates" => [
-            "name" => "maman",
-            "photo" => "https://via.placeholder.com/150",
-            "department" => "sistem informasi",
-            "description" => "ihvbsubsikbs",
-        ]]);
+    public function showKandidatAll(Request $request)
+    {
+        $candidates = Kandidat::with('prodi')->get(); // Semua kandidat
+        $groupedCandidates = $candidates->groupBy('kd_prodi'); // Dikelompokkan untuk filter
+        return view('kandidat', [
+            'prodis' => Prodi::all(),
+            'candidates' => $candidates,
+            'groupedCandidates' => $groupedCandidates,
+        ]);
     }
 }

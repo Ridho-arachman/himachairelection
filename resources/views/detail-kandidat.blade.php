@@ -3,18 +3,22 @@
 @section('title', 'Detail Kandidat')
 
 @section('content')
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold text-center text-blue-500 mb-8">Detail Kandidat</h1>
-        <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
-            <img src="{{ $candidate['photo'] }}" alt="{{ $candidate['name'] }}"
-                class="w-full h-48 object-cover rounded-lg mb-6">
-            <h2 class="text-2xl font-semibold text-gray-700">{{ $candidate['name'] }}</h2>
-            <p class="text-gray-500 mb-4"><strong>Jurusan:</strong> {{ $candidate['department'] }}</p>
-            <p class="text-gray-600">{{ $candidate['description'] }}</p>
-            <a href="{{ route('dashboard') }}"
-                class="mt-6 block px-6 py-2 bg-gray-500 text-white font-semibold text-center rounded-lg hover:bg-gray-600 transition">
-                Kembali ke Daftar
-            </a>
+    <div class="container mx-auto py-8 px-4 ">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800">
+            <img src="{{ asset('images/54b19ada-d53e-4ee9-8882-9dfed1bf1396.jpg') }}" alt="{{ $candidate->nama }}"
+                class="w-full h-64 object-cover">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold dark:text-white">{{ $candidate->nama }}</h1>
+                <p class="text-gray-600 mt-4 dark:text-white">{{ $candidate->visi_misi }}</p>
+
+                <form action="{{ route('vote-store') }}" method="POST" class="mt-4">
+                    @csrf
+                    <input type="hidden" name="nim_kandidat" value="{{ $candidate->nim_kandidat }}">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Vote</button>
+                </form>
+
+                <a href="{{ route('dashboard') }}" class="block mt-4 text-blue-500 hover:underline">Kembali ke Dashboard</a>
+            </div>
         </div>
     </div>
 @endsection

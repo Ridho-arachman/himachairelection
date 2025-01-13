@@ -20,8 +20,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(EnsureAuthenticated::class)->group(function () {
-    Route::get('/kandidat', [KandidatController::class, "showKandidat"])->name('dashboard');
-    // Route::get('/kandidat/{id}', [KandidatController::class, 'showKandidat'])->whereUlid('id')->name('kandidat');
+    Route::get('/kandidat', [KandidatController::class, "showKandidatAll"])->name('dashboard');
+    Route::get('/kandidat/{id}', [KandidatController::class, 'showKandidat'])->name('detail-kandidat');
+    Route::post('/vote', [VoteController::class, 'store'])->name('vote-store');
 });
 
 Route::fallback([NotFoundController::class, '__invoke']);

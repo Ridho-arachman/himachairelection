@@ -10,13 +10,24 @@ use Illuminate\Database\Eloquent\Model;
 class Kandidat extends Model
 {
     use HasUlids, HasFactory;
-    protected $guarded = ['nim'];
-    protected $primaryKey = 'nim';
+    protected $primaryKey = 'nim_kandidat';
     protected $table = 'kandidat';
     public $incrementing = false;
 
+    protected $fillable = [
+        'nim_kandidat',
+        'nama_kandidat',
+        'nim',
+        'kd_prodi',
+    ];
+
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'kd_prodi');
+    }
+
     public function user()
     {
-        return $this->hasMany(User::class, 'kandidat_id', 'nim');
+        return $this->belongsToMany(User::class, 'vote', 'nim_kandidat', 'id_user');
     }
 }

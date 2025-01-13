@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('vote', function (Blueprint $table) {
             $table->foreignUlid('id_user')->primary();
             $table->char('nim_kandidat', 10);
-            $table->timestamp('waktu_vote');
+            $table->timestamps();
 
             $table->foreign('nim_kandidat')
                 ->references('nim_kandidat')

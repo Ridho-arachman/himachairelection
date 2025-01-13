@@ -20,9 +20,9 @@ class KandidatFactory extends Factory
     public function definition(): array
     {
         return [
-            "nim_kandidat" => fake()->unique()->randomNumber(10),
+            "nim_kandidat" => fake()->unique()->randomNumber(6),
             'kd_prodi' => Prodi::inRandomOrder()->first()->kd_prodi,
-            "nama_kandidat" => fake()->name(),
+            "nama" => fake()->name(),
             "foto" => fake()->imageUrl(),
             "visi_misi" => fake()->text(),
         ];
