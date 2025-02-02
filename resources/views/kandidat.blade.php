@@ -54,7 +54,7 @@
                 allCandidates.forEach(candidate => {
                     const component = `
     <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <img src="${candidate.foto}" alt="${candidate.nama}" class="w-full h-32 object-cover">
+        <img src="{{ asset('images/54b19ada-d53e-4ee9-8882-9dfed1bf1396.jpg') }}" alt="${candidate.nama}" class="w-full h-32 object-cover">
         <div class="p-4">
             <h2 class="text-xl font-bold">${candidate.nama}</h2>
             <p class="text-gray-600 mt-2">${candidate.visi_misi.substring(0, 100)}...</p>
@@ -71,11 +71,11 @@
                 groupedCandidates[jurusan].forEach(candidate => {
                     const component = `
                         <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                            <img src="${candidate.foto}" alt="${candidate.nama}" class="w-full h-32 object-cover">
+                            <img src="{{ asset('images/54b19ada-d53e-4ee9-8882-9dfed1bf1396.jpg') }}" alt="${candidate.nama}" class="w-full h-32 object-cover">
                             <div class="p-4">
                                 <h2 class="text-xl font-bold">${candidate.nama}</h2>
                                 <p class="text-gray-600 mt-2">${candidate.visi_misi.substring(0, 100)}...</p>
-                                <a href="/candidate/${candidate.nim_kandidat}" 
+                                <a href="/kandidat/${candidate.nim_kandidat}" 
                                     class="block mt-4 text-blue-500 hover:underline font-semibold">Lihat Detail</a>
                             </div>
                         </div>
