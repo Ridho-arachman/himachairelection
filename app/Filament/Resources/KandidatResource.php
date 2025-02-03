@@ -62,9 +62,10 @@ class KandidatResource extends Resource
             TextColumn::make('nama')
                 ->label('Nama')
                 ->searchable(),
-            ImageColumn::make('foto')
+            ImageColumn::make('fot')
                 ->label('Foto')
                 ->circular()
+                ->defaultImageUrl(url('/images/54b19ada-d53e-4ee9-8882-9dfed1bf1396.jpg'))
                 // ->getStateUsing(function ($record) {
                 //     return asset('storage/' . $record->image); // Menggunakan URL yang benar
                 // })
